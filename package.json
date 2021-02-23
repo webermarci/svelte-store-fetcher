@@ -2,7 +2,8 @@
   "name": "svelte-store-fetcher",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib /**/*"
   ],

@@ -1,5 +1,7 @@
 # Svelte Store Fetcher
 
+[![npm version](https://badge.fury.io/js/svelte-store-fetcher.svg)](https://badge.fury.io/js/svelte-store-fetcher)
+
 This package helps you with fetching and caching responses with rarely showing the loading state.
 
 It's based on [Tim's original implementation](https://github.com/cstrnt/modern-fetch-with-svelte).

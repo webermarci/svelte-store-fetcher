@@ -5,6 +5,12 @@ This package helps you with fetching and caching responses with rarely showing t
 It's based on [Tim's original implementation](https://github.com/cstrnt/modern-fetch-with-svelte).
 
 ## Usage
+```bash
+yarn add -D svelte-store-fetcher
+
+npm install --save-dev svelte-store-fetcher
+```
+
 ```html
 <script>
   import { get } from "svelte-store-fetcher";

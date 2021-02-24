@@ -18,7 +18,12 @@
     "version": "git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "keywords": [],
+  "keywords": [
+    "svelte",
+    "store",
+    "cache",
+    "fetch"
+  ],
   "author": "webermarci",
   "license": "MIT",
   "devDependencies": {

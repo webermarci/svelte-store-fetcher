@@ -5,14 +5,25 @@ interface CachedData {
     data: any;
 }
 
-export const get = (url: string, cacheMillisconds = 100): Writable<Promise<unknown>> => {
-    const store = writable(new Promise(() => { }));
+const getCached = (url: string) => {
+    const cached = localStorage.getItem(url);
+    if (cached) {
+        return JSON.parse(cached) as CachedData;
+    }
+}
 
-    const stored = localStorage.getItem(url);
-    if (stored) {
-        const cachedData: CachedData = JSON.parse(stored);
-        store.set(Promise.resolve(cachedData.data));
-        if (cachedData.until > new Date().getTime()) {
+const setCached = (url: string, data: CachedData) => {
+    localStorage.setItem(url, JSON.stringify(data));
+}
+
+export const get = (url: string, cacheMs = 100): Writable<Promise<unknown>> => {
+    const store = writable(new Promise(() => { }));
+    const now = new Date().getTime();
+
+    const cached = getCached(url);
+    if (cached) {
+        store.set(Promise.resolve(cached.data));
+        if (cached.until > now) {
             return store;
         }
     }
@@ -21,11 +32,7 @@ export const get = (url: string, cacheMillisconds = 100): Writable<Promise<unkno
         const response = await fetch(url);
         const data = await response.json();
         store.set(Promise.resolve(data));
-        const dataToCache: CachedData = {
-            until: new Date().getTime() + cacheMillisconds,
-            data: data
-        }
-        localStorage.setItem(url, JSON.stringify(dataToCache));
+        setCached(url, { until: now + cacheMs, data: data })
     })()
 
     return store;

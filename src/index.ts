@@ -38,7 +38,7 @@ const hashCode = (s: string) => {
     return hash.toString(16);
 }
 
-export const get = (requestInfo: RequestInfo, cacheMs = 10): Writable<Promise<unknown>> => {
+export const get = (requestInfo: RequestInfo, cacheMs = 10): Writable<Promise<any>> => {
     const store = writable(new Promise(() => { }));
     const now = new Date().getTime();
     const key = generateKey(requestInfo);

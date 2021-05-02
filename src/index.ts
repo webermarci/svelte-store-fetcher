@@ -52,10 +52,14 @@ export const get = (requestInfo: RequestInfo, cacheMs = 10): Writable<Promise<an
     }
 
     (async () => {
-        const response = await fetch(requestInfo);
-        const data = await response.json();
-        store.set(Promise.resolve(data));
-        setCached(key, { until: now + cacheMs, data: data })
+        try {
+            const response = await fetch(requestInfo);
+            const data = await response.json();
+            store.set(Promise.resolve(data));
+            setCached(key, { until: now + cacheMs, data: data });
+        } catch (err) {
+            throw err;
+        }
     })()
 
     return store;

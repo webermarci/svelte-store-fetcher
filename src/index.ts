@@ -58,7 +58,7 @@ export const get = (requestInfo: RequestInfo, cacheMs = 10): Writable<Promise<an
             store.set(Promise.resolve(data));
             setCached(key, { until: now + cacheMs, data: data });
         } catch (err) {
-            return Promise.reject(err);
+            return store.set(Promise.reject(err));
         }
     })()
 

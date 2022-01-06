@@ -27,7 +27,7 @@
   "author": "webermarci",
   "license": "MIT",
   "devDependencies": {
-    "svelte": "3.44.3",
+    "svelte": "3.45.0",
     "typescript": "4.5.4"
   }
 }

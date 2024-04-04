@@ -28,6 +28,6 @@
   "license": "MIT",
   "devDependencies": {
     "svelte": "4.2.12",
-    "typescript": "5.4.3"
+    "typescript": "5.4.4"
   }
 }
